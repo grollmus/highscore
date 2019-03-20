@@ -1,6 +1,6 @@
 import { Controller, Get, Req, Post, Body, Param } from '@nestjs/common';
 import { PlayerService } from '../services/player.service';
-import { CreatePlayerCommand } from 'commands/player/create-player.command';
+import { CreatePlayerCommand } from '../commands/player/create-player.command';
 
 @Controller('players')
 export class PlayerController {

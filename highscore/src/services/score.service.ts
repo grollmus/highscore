@@ -1,9 +1,9 @@
 import { Injectable } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { IScoreModel } from 'schemas/score.schema';
-import { IPlayerModel } from 'schemas/player.schema';
-import { CreateScoreCommand } from 'commands/score/create-score.command';
+import { IScoreModel } from '../schemas/score.schema';
+import { IPlayerModel } from '../schemas/player.schema';
+import { CreateScoreCommand } from '../commands/score/create-score.command';
 
 @Injectable()
 export class ScoreService {

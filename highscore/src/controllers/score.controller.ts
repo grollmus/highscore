@@ -1,8 +1,6 @@
 import { Controller, Get, Req, Post, Body, Param } from '@nestjs/common';
-import { PlayerService } from '../services/player.service';
-import { CreatePlayerCommand } from 'commands/player/create-player.command';
-import { ScoreService } from 'services/score.service';
-import { CreateScoreCommand } from 'commands/score/create-score.command';
+import { ScoreService } from '../services/score.service';
+import { CreateScoreCommand } from '../commands/score/create-score.command';
 
 @Controller('players/:playerId/scores')
 export class ScoreController {
