@@ -1,6 +1,6 @@
 import * as mongoose from 'mongoose';
-import { Score } from 'interfaces/score.interface';
 import { Document } from 'mongoose';
+import { Score } from '../interfaces/score.interface';
 
 export const ScoreSchema = new mongoose.Schema({
     score: {
