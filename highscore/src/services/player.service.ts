@@ -20,7 +20,8 @@ export class PlayerService {
         return players;
     }
 
-    async delete(id: string): Promise<void> {
-        const player = await this.playerModel.findByIdAndDelete(id).exec();
+    async delete(id: string): Promise<boolean> {
+        const deleted =  await this.playerModel.findByIdAndDelete(id).exec();
+        return !!deleted;
     }
 }
