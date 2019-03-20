@@ -14,7 +14,7 @@ export class ScoreService {
     async create(playerId: string, command: CreateScoreCommand) {
         const player = await this.playerModel.findById(playerId).exec();
         player.scores.push(new this.scoreModel(command));
-        await player.save();
+        return await player.save();
     }
 
     async get(playerId: string) {
