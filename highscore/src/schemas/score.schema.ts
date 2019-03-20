@@ -1,4 +1,6 @@
 import * as mongoose from 'mongoose';
+import { Score } from 'interfaces/score.interface';
+import { Document } from 'mongoose';
 
 export const ScoreSchema = new mongoose.Schema({
     score: {
@@ -16,4 +18,6 @@ export const ScoreSchema = new mongoose.Schema({
     },
 });
 
-export const ScoreModel = mongoose.model('ScoreModel', ScoreSchema);
+export interface IScoreModel extends Score, Document {
+
+}
