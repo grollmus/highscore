@@ -11,6 +11,7 @@ import { ScoreController } from './controllers/score.controller';
 import { ScoreSchema } from './schemas/score.schema';
 import { GlobalExceptionFilter } from './filter/global-exception.filter';
 import { HighscoreModule } from './highscore/highscore.module';
+import { PlayerModule } from './player/player.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { HighscoreModule } from './highscore/highscore.module';
     },
     { name: 'ScoreModel', schema: ScoreSchema }]),
     HighscoreModule,
+    PlayerModule,
   ],
   controllers: [
     AppController,
