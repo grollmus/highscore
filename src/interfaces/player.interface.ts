@@ -1,4 +1,4 @@
-import { Score } from "./score.interface";
+import { Score } from './score.interface';
 
 export interface Player {
     name: string;
