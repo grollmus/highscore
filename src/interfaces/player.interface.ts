@@ -6,4 +6,3 @@ export interface Player {
     dateCreated: Date;
     totalScore: number;
 }
-
