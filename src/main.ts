@@ -1,10 +1,19 @@
 import { NestFactory } from '@nestjs/core';
-import { AppModule } from './app.module';
+import { SwaggerModule, DocumentBuilder } from '@nestjs/swagger';
 import { ValidationPipe } from '@nestjs/common';
-import { GlobalExceptionFilter } from 'filter/global-exception.filter';
+import { AppModule } from './app.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
+
+  const options = new DocumentBuilder()
+    .setTitle('Grollmus')
+    .setVersion('1.0')
+    .addTag('player')
+    .build();
+  const document = SwaggerModule.createDocument(app, options);
+  SwaggerModule.setup('swagger', app, document);
+
   app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
     methods: ['GET', 'PUT', 'POST', 'DELETE'],
