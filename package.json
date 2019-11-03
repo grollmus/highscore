@@ -1,8 +1,14 @@
 {
   "name": "highscore",
-  "version": "0.0.1",
-  "description": "",
-  "author": "",
+  "version": "1.1.0",
+  "description": "Backend for the Grollmus Highscore-Board to count Creative-Day points.",
+  "author": "Grollmus München GmbH <developers@grollmus.de> (https://www.grollmus.de/)",
+  "maintainers": [
+    "Daniel Weiß <daniel.weiss@grollmus.de> (https://www.grollmus.de)"
+  ],
+  "contributors": [
+    "Patrick Henkelmann"
+  ],
   "license": "MIT",
   "scripts": {
     "build": "tsc -p tsconfig.build.json",
