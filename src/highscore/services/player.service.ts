@@ -18,7 +18,7 @@ export class PlayerService {
   }
 
   async get(): Promise<Player[]> {
-    const players = await this.playerModel.find().exec();
+    const players = await this.playerModel.aggregate([{ $limit: 10 }]);
     return players;
   }
 
