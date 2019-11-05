@@ -35,7 +35,7 @@ export class AuthService {
   }
 
   async validateUserByJwt(payload: JwtPayload) {
-    let user = await this.usersService.findOneByEmail(payload.email);
+    const user = await this.usersService.findOneByEmail(payload.email);
 
     if (user) {
       return this.createJwtPayload(user);
@@ -45,7 +45,7 @@ export class AuthService {
   }
 
   createJwtPayload(user) {
-    let data: JwtPayload = {
+    const data: JwtPayload = {
       email: user.email,
     };
 
