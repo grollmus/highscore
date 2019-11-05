@@ -3,6 +3,7 @@ import { JwtService } from '@nestjs/jwt';
 import { LoginUserDto } from '../users/dto/login-user.dto';
 import { UsersService } from '../users/users.service';
 import { JwtPayload } from './interfaces/jwt-payload.interface';
+import { User } from 'users/interfaces/user.interface';
 
 @Injectable()
 export class AuthService {
@@ -12,12 +13,12 @@ export class AuthService {
   ) {}
 
   async validateUserByPassword(loginAttempt: LoginUserDto) {
-    let userToAttempt: any = await this.usersService.findOneByEmail(
+    const userToAttempt: any = await this.usersService.findOneByEmail(
       loginAttempt.email,
     );
 
     if (!userToAttempt) {
-      throw new UnauthorizedException();
+      throw new UnauthorizedException('Unknown User');
     }
 
     return new Promise(resolve => {
