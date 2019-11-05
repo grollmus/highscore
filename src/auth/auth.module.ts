@@ -10,7 +10,7 @@ import { JwtStrategy } from './strategies/jwt.strategy';
   imports: [
     PassportModule.register({ defaultStrategy: 'jwt', session: false }),
     JwtModule.register({
-      secretOrPrivateKey: 'thisismykickasssecretthatiwilltotallychangelater',
+      secret: 'thisismykickasssecretthatiwilltotallychangelater',
       signOptions: {
         expiresIn: 3600,
       },
@@ -18,6 +18,6 @@ import { JwtStrategy } from './strategies/jwt.strategy';
     UsersModule,
   ],
   controllers: [AuthController],
-  providers: [AuthService, JwtStrategy]
+  providers: [AuthService, JwtStrategy],
 })
 export class AuthModule {}
