@@ -7,11 +7,11 @@ import { UsersController } from './users.controller';
 
 @Module({
   imports: [
-    MongooseModule.forFeature([{name: 'User', schema: UserSchema}]),
-    PassportModule.register({ defaultStrategy: 'jwt', session: false })
+    MongooseModule.forFeature([{ name: 'User', schema: UserSchema }]),
+    PassportModule.register({ defaultStrategy: 'jwt', session: false }),
   ],
   exports: [UsersService],
   controllers: [UsersController],
-  providers: [UsersService]
+  providers: [UsersService],
 })
 export class UsersModule {}

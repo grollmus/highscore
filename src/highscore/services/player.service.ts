@@ -12,13 +12,18 @@ export class PlayerService {
     private readonly playerModel: Model<IPlayerModel>,
   ) {}
 
-  async create(command: CreatePlayerDto): Promise<Player> {
-    const createdPlayer = new this.playerModel(command);
-    return await createdPlayer.save();
+  async create(command: CreatePlayerDto[]): Promise<Player[]> {
+    return await this.playerModel.insertMany(command);
+  }
+
+  async getNames(): Promise<any[]> {
+    // const playerNames = await this.playerModel.find({}, { name: 1 });
+    const playerNames = await this.playerModel.distinct('name');
+    return playerNames;
   }
 
   async get(): Promise<Player[]> {
-    const players = await this.playerModel.aggregate([{ $limit: 10 }]);
+    const players = await this.playerModel.find();
     return players;
   }
 

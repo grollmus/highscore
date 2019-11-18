@@ -14,8 +14,8 @@ export class ScoreService {
     private readonly scoreModel: Model<IScoreModel>,
   ) {}
 
-  async create(playerId: string, command: CreateScoreDto) {
-    const player = await this.playerModel.findById(playerId).exec();
+  async create(playerName: string, command: CreateScoreDto) {
+    const player = await this.playerModel.findOne({ name: playerName }).exec();
     player.scores.push(new this.scoreModel(command));
     return await player.save();
   }

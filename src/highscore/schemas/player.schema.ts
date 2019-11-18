@@ -4,43 +4,38 @@ import { ScoreSchema } from './score.schema';
 import { Player } from '../interfaces/player.interface';
 
 export const PlayerSchema = new mongoose.Schema({
-    name: {
-        type: String,
-        required: true,
-        index: true,
-        unique: true,
-        validate: {
-            validator: function (value) {
-                return value.length === 3;
-            },
-        },
-        set: (value: string) => {
-            return value.toUpperCase();
-        },
+  name: {
+    type: String,
+    required: true,
+    index: true,
+    unique: true,
+    validate: {
+      validator: function(value) {
+        return value.length === 3;
+      },
     },
-    scores: {
-        type: [ScoreSchema],
+    set: (value: string) => {
+      return value.toUpperCase();
     },
-    dateCreated: {
-        type: Date,
-        default: Date.now(),
-        required: true,
-    },
-
+  },
+  scores: {
+    type: [ScoreSchema],
+  },
+  dateCreated: {
+    type: Date,
+    default: Date.now(),
+    required: true,
+  },
 });
 
-PlayerSchema.virtual('totalScore').get(function () {
-    if (this.scores && this.scores.length) {
-        return this.scores.map(s => s.score).reduce((acc, value) => acc + value);
-    } else {
-        return 0;
-    }
+PlayerSchema.virtual('totalScore').get(function() {
+  if (this.scores && this.scores.length) {
+    return this.scores.map(s => s.score).reduce((acc, value) => acc + value);
+  } else {
+    return 0;
+  }
 });
 
 PlayerSchema.set('toJSON', { virtuals: true });
 
-export interface IPlayerModel extends Player, Document {
-
-}
-
-
+export interface IPlayerModel extends Player, Document {}

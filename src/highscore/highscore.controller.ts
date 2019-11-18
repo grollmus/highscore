@@ -25,7 +25,7 @@ export class HighscoreController {
   @ApiUseTags('highscore')
   @UseGuards(AuthGuard())
   @Post('players')
-  async createPlayer(@Body() createBox: CreatePlayerDto) {
+  async createPlayer(@Body() createBox: CreatePlayerDto[]) {
     return await this.playerService.create(createBox);
   }
 
@@ -43,15 +43,21 @@ export class HighscoreController {
     return await this.playerService.delete(playerId);
   }
 
+  @ApiUseTags('highscore')
+  @Get('players/names')
+  async getPlayerNames() {
+    return await this.playerService.getNames();
+  }
+
   @ApiBearerAuth()
   @ApiUseTags('highscore')
   @UseGuards(AuthGuard())
-  @Post('players/:playerId/scores')
+  @Post('players/:playerName/scores')
   async createPlayerScore(
-    @Param('playerId') playerId: string,
+    @Param('playerName') playerName: string,
     @Body() score: CreateScoreDto,
   ) {
-    return await this.scoreService.create(playerId, score);
+    return await this.scoreService.create(playerName, score);
   }
 
   @ApiUseTags('highscore')
