@@ -1,6 +1,9 @@
 <h1 align="center">Welcome to Grollmus Highscore Backend 👋</h1>
 <p>
   <img alt="CircleCI" src="https://img.shields.io/circleci/build/github/grollmus/highscore-backend/master">
+  <a href="https://www.codacy.com/manual/Grollmus/highscore-backend?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=grollmus/highscore-backend&amp;utm_campaign=Badge_Grade">
+    <img src="https://api.codacy.com/project/badge/Grade/72e536e9a2c548fe93452210c67cd0a9"/>
+  </a>
   <img alt="Version" src="https://img.shields.io/badge/version-1.1.0-blue.svg?cacheSeconds=2592000" />
   <a href="LICENSE" target="_blank">
     <img alt="License: MIT" src="https://img.shields.io/badge/License-MIT-yellow.svg" />
