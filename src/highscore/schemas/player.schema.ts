@@ -10,13 +10,11 @@ export const PlayerSchema = new mongoose.Schema({
     index: true,
     unique: true,
     validate: {
-      validator: function(value) {
+      validator: value => {
         return value.length === 3;
       },
     },
-    set: (value: string) => {
-      return value.toUpperCase();
-    },
+    set: (value: string) => value.toUpperCase(),
   },
   scores: {
     type: [ScoreSchema],

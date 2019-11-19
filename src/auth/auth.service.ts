@@ -23,7 +23,9 @@ export class AuthService {
 
     return new Promise(resolve => {
       userToAttempt.checkPassword(loginAttempt.password, (err, isMatch) => {
-        if (err) throw new UnauthorizedException();
+        if (err) {
+          throw new UnauthorizedException();
+        }
 
         if (isMatch) {
           resolve(this.createJwtPayload(userToAttempt));
@@ -37,7 +39,7 @@ export class AuthService {
   async validateUserByJwt(payload: JwtPayload) {
     const user = await this.usersService.findOneByEmail(payload.email);
 
-    if (user) { 
+    if (user) {
       return this.createJwtPayload(user);
     } else {
       throw new UnauthorizedException();
@@ -49,11 +51,9 @@ export class AuthService {
       email: user.email,
     };
 
-    let jwt = this.jwtService.sign(data);
-
     return {
       expiresIn: 3600,
-      token: jwt,
+      token: this.jwtService.sign(data),
     };
   }
 }
