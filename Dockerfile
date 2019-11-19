@@ -1,11 +1,12 @@
-FROM node:10.15.3-alpine
+FROM node:12.13-alpine
 
+RUN apk update && apk add --no-cache make g++ python
 RUN mkdir -p /home/node/app/node_modules && chown -R node:node /home/node/app
 WORKDIR /home/node/app
 COPY ./package*.json ./
 USER node
 RUN npm install
 COPY --chown=node:node ./ ./
-RUN npm run-script build
+RUN npm run build
 EXPOSE 3000
 CMD [ "node", "dist/main.js" ]
