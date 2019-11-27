@@ -10,7 +10,7 @@ import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot('mongodb://localhost:27017/highscore'),
+    MongooseModule.forRoot('mongodb://192.168.1.73:27017/highscore'),
     HighscoreModule,
     AuthModule,
     UsersModule,
