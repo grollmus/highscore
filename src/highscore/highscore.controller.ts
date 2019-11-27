@@ -9,7 +9,7 @@ import {
 } from '@nestjs/common';
 import { CreatePlayerDto } from './dto/create-player.dto';
 import { PlayerService } from './services/player.service';
-import { ScoreService } from 'highscore/services/score.service';
+import { ScoreService } from './services/score.service';
 import { CreateScoreDto } from './dto/create-score.dto';
 import { ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
