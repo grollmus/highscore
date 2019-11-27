@@ -10,7 +10,7 @@ async function bootstrap() {
   const options = new DocumentBuilder()
     .setTitle('Grollmus Highscore')
     .setVersion(version)
-    .addBearerAuth('Authorization', 'header', 'Bearer')
+    .addBearerAuth('Authorization', 'header', 'apiKey')
     .build();
   const document = SwaggerModule.createDocument(app, options);
   SwaggerModule.setup('swagger', app, document);
