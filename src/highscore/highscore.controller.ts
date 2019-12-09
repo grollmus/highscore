@@ -65,4 +65,15 @@ export class HighscoreController {
   async getPlayerScore(@Param('playerId') playerId: string) {
     return await this.scoreService.get(playerId);
   }
+
+  @ApiBearerAuth()
+  @ApiUseTags('highscore')
+  @UseGuards(AuthGuard())
+  @Delete('score/:playerId/:scoreId')
+  async deleteScoreFromPlayer(
+    @Param('playerId') playerId: string,
+    @Param('scoreId') scoreId: string,
+  ) {
+    return await this.scoreService.delete(playerId, scoreId);
+  }
 }
