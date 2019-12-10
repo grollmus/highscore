@@ -11,12 +11,15 @@ import { CreatePlayerDto } from './dto/create-player.dto';
 import { PlayerService } from './services/player.service';
 import { ScoreService } from './services/score.service';
 import { CreateScoreDto } from './dto/create-score.dto';
+import { CreateArchiveDto } from './dto/create-archive.dto';
 import { ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { ArchiveService } from './services/archive.service';
 
 @Controller('highscore')
 export class HighscoreController {
   constructor(
+    private readonly archiveService: ArchiveService,
     private readonly playerService: PlayerService,
     private readonly scoreService: ScoreService,
   ) {}
@@ -75,5 +78,13 @@ export class HighscoreController {
     @Param('scoreId') scoreId: string,
   ) {
     return await this.scoreService.delete(playerId, scoreId);
+  }
+
+  @ApiBearerAuth()
+  @ApiUseTags('highscore')
+  @UseGuards(AuthGuard())
+  @Post('archive')
+  async archive(@Body() createArchive: CreateArchiveDto) {
+    return await this.archiveService.archive(createArchive);
   }
 }

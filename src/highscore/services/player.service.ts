@@ -31,4 +31,7 @@ export class PlayerService {
     const deleted = await this.playerModel.findByIdAndDelete(id).exec();
     return !!deleted;
   }
+  async dropCollection() {
+    return await this.playerModel.collection.drop();
+  }
 }
