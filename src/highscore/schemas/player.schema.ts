@@ -8,7 +8,6 @@ export const PlayerSchema = new mongoose.Schema({
     type: String,
     required: true,
     index: true,
-    unique: true,
     validate: {
       validator: value => {
         return value.length === 3;

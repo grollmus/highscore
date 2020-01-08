@@ -24,4 +24,14 @@ export class ScoreService {
     const player = await this.playerModel.findOne(playerId).exec();
     return player.scores;
   }
+
+  async delete(playerId: string, scoreId: string) {
+    const deleted = await this.playerModel.findOneAndUpdate(
+      { _id: playerId },
+      {
+        $pull: { scores: { _id: scoreId } },
+      },
+    );
+    return !!deleted;
+  }
 }

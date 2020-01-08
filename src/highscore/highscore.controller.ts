@@ -11,12 +11,15 @@ import { CreatePlayerDto } from './dto/create-player.dto';
 import { PlayerService } from './services/player.service';
 import { ScoreService } from './services/score.service';
 import { CreateScoreDto } from './dto/create-score.dto';
+import { CreateArchiveDto } from './dto/create-archive.dto';
 import { ApiUseTags, ApiBearerAuth } from '@nestjs/swagger';
 import { AuthGuard } from '@nestjs/passport';
+import { ArchiveService } from './services/archive.service';
 
 @Controller('highscore')
 export class HighscoreController {
   constructor(
+    private readonly archiveService: ArchiveService,
     private readonly playerService: PlayerService,
     private readonly scoreService: ScoreService,
   ) {}
@@ -64,5 +67,36 @@ export class HighscoreController {
   @Get('players/:playerId/scores')
   async getPlayerScore(@Param('playerId') playerId: string) {
     return await this.scoreService.get(playerId);
+  }
+
+  @ApiBearerAuth()
+  @ApiUseTags('highscore')
+  @UseGuards(AuthGuard())
+  @Delete('score/:playerId/:scoreId')
+  async deleteScoreFromPlayer(
+    @Param('playerId') playerId: string,
+    @Param('scoreId') scoreId: string,
+  ) {
+    return await this.scoreService.delete(playerId, scoreId);
+  }
+
+  @ApiBearerAuth()
+  @ApiUseTags('highscore')
+  @UseGuards(AuthGuard())
+  @Post('archive')
+  async archive(@Body() createArchive: CreateArchiveDto) {
+    return await this.archiveService.archive(createArchive);
+  }
+
+  @ApiUseTags('highscore')
+  @Get('archive')
+  async getArchives() {
+    return await this.archiveService.getArchives();
+  }
+
+  @ApiUseTags('highscore')
+  @Get('archive/:archiveId')
+  async getArchiveById(@Param('archiveId') archiveId: string) {
+    return await this.archiveService.getArchiveById(archiveId);
   }
 }
