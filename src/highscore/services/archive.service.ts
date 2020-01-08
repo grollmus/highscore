@@ -30,4 +30,12 @@ export class ArchiveService {
       },
     );
   }
+
+  async getArchives() {
+    return await this.archiveModel.find();
+  }
+
+  async getArchiveById(id) {
+    return await this.archiveModel.findById(id);
+  }
 }

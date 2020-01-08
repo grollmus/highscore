@@ -87,4 +87,18 @@ export class HighscoreController {
   async archive(@Body() createArchive: CreateArchiveDto) {
     return await this.archiveService.archive(createArchive);
   }
+
+  @ApiBearerAuth()
+  @ApiUseTags('highscore')
+  @Get('archive')
+  async getArchives() {
+    return await this.archiveService.getArchives();
+  }
+
+  @ApiBearerAuth()
+  @ApiUseTags('highscore')
+  @Get('archive/:archiveId')
+  async getArchiveById(@Param('archiveId') archiveId: string) {
+    return await this.archiveService.getArchiveById(archiveId);
+  }
 }
