@@ -26,11 +26,12 @@ export class ScoreService {
   }
 
   async delete(playerId: string, scoreId: string) {
-    await this.playerModel.findOneAndUpdate(
+    const deleted = await this.playerModel.findOneAndUpdate(
       { _id: playerId },
       {
         $pull: { scores: { _id: scoreId } },
       },
     );
+    return !!deleted;
   }
 }
