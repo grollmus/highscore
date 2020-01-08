@@ -23,7 +23,6 @@ export class ArchiveService {
       },
       (err, doc) => {
         if (err) {
-          console.error('=======', err);
           throw new InternalServerErrorException(err);
         }
         this.playerService.dropCollection();
