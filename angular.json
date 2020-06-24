@@ -3,9 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "GrollmusLeaderboardClient": {
+    "HighscoreClient": {
       "root": "",
-      "sourceRoot": "src",
+      "sourceRoot": "client/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {
@@ -18,15 +18,15 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/GrollmusLeaderboardClient",
-            "index": "src/index.html",
-            "main": "src/main.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.app.json",
-            "assets": ["src/assets"],
+            "outputPath": "dist/client",
+            "index": "client/src/index.html",
+            "main": "client/src/main.ts",
+            "polyfills": "client/src/polyfills.ts",
+            "tsConfig": "client/src/tsconfig.app.json",
+            "assets": ["client/src/assets"],
             "styles": [
               "node_modules/nes.css/css/nes.css",
-              "src/stylesheets/styles.scss"
+              "client/src/stylesheets/styles.scss"
             ],
             "stylePreprocessorOptions": {
               "includePaths": [
@@ -41,8 +41,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
+                  "replace": "client/src/environments/environment.ts",
+                  "with": "client/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -71,28 +71,28 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "GrollmusLeaderboardClient:build"
+            "browserTarget": "HighscoreClient:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "GrollmusLeaderboardClient:build:production"
+              "browserTarget": "HighscoreClient:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "GrollmusLeaderboardClient:build"
+            "browserTarget": "HighscoreClient:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "src/test.ts",
-            "polyfills": "src/polyfills.ts",
-            "tsConfig": "src/tsconfig.spec.json",
-            "karmaConfig": "src/karma.conf.js",
-            "styles": ["src/stylesheets/styles.scss"],
+            "main": "client/src/test.ts",
+            "polyfills": "client/src/polyfills.ts",
+            "tsConfig": "client/src/tsconfig.spec.json",
+            "karmaConfig": "client/src/karma.conf.js",
+            "styles": ["client/src/stylesheets/styles.scss"],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "node_modules/foundation-sites/scss/",
@@ -100,47 +100,50 @@
               ]
             },
             "scripts": [],
-            "assets": ["src/assets"]
+            "assets": ["client/src/assets"]
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": ["src/tsconfig.app.json", "src/tsconfig.spec.json"],
+            "tsConfig": [
+              "client/src/tsconfig.app.json",
+              "client/src/tsconfig.spec.json"
+            ],
             "exclude": ["**/node_modules/**", "**/*.json"]
           }
         }
       }
     },
-    "GrollmusLeaderboardClient-e2e": {
-      "root": "e2e/",
+    "HighscoreClient-e2e": {
+      "root": "client/e2e/",
       "projectType": "application",
       "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "GrollmusLeaderboardClient:serve"
+            "protractorConfig": "client/e2e/protractor.conf.js",
+            "devServerTarget": "HighscoreClient:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "GrollmusLeaderboardClient:serve:production"
+              "devServerTarget": "HighscoreClient:serve:production"
             }
           }
         },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": "e2e/tsconfig.e2e.json",
+            "tsConfig": "client/e2e/tsconfig.e2e.json",
             "exclude": ["**/node_modules/**"]
           }
         }
       }
     }
   },
-  "defaultProject": "GrollmusLeaderboardClient",
+  "defaultProject": "HighscoreClient",
   "cli": {
-    "analytics": false
+    "analytics": true
   }
 }

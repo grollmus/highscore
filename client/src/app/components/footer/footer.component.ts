@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { version } from '../../../../package.json';
+import { version } from '../../../../../package.json';
 import { ArchiveService } from '@app/services/archive.service.js';
 
 @Component({
