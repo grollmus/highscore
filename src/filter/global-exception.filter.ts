@@ -8,8 +8,8 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const response = ctx.getResponse<Response>();
     const request = ctx.getRequest<Request>();
 
-    response.status(500).json({
-      statusCode: 500,
+    response.status(404).json({
+      statusCode: 404,
       timestamp: new Date().toISOString(),
       path: request.url,
     });
