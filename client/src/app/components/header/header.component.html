@@ -1,0 +1,52 @@
+<header class="header">
+  <div class="grid-x">
+    <div class="cell text-center">
+      <h1>
+        <a (click)="logout()"><i class="nes-logo"></i></a>
+        <a routerLink="/">{{ appTitle }}</a>
+        <a (click)="loginOrRedirectToAdmin()"><i class="snes-jp-logo"></i></a>
+      </h1>
+      <span *ngIf="isLoggedIn" class="nes-text is-success">
+        You are Logged-In
+      </span>
+    </div>
+  </div>
+</header>
+
+<dialog class="nes-dialog" id="dialog-login" #addLoginDialog>
+  <form method="dialog" [formGroup]="loginForm" (submit)="submitLogin()">
+    <p class="title">Login</p>
+    <div class="nes-field">
+      <label for="email">Email</label>
+      <input
+        formControlName="email"
+        type="email"
+        id="email"
+        class="nes-input"
+      />
+    </div>
+    <div class="nes-field">
+      <label for="password">Password</label>
+      <input
+        formControlName="password"
+        type="password"
+        id="password"
+        class="nes-input"
+      />
+    </div>
+    <menu class="dialog-menu">
+      <div class="grid-x">
+        <div class="cell auto">
+          <button class="nes-btn" type="reset" (click)="loginDialog.close()">
+            Cancel
+          </button>
+        </div>
+        <div class="cell auto text-right">
+          <button class="nes-btn is-primary" type="submit">
+            Confirm
+          </button>
+        </div>
+      </div>
+    </menu>
+  </form>
+</dialog>
