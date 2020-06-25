@@ -85,24 +85,6 @@
             "browserTarget": "HighscoreClient:build"
           }
         },
-        "test": {
-          "builder": "@angular-devkit/build-angular:karma",
-          "options": {
-            "main": "client/src/test.ts",
-            "polyfills": "client/src/polyfills.ts",
-            "tsConfig": "client/src/tsconfig.spec.json",
-            "karmaConfig": "client/src/karma.conf.js",
-            "styles": ["client/src/stylesheets/styles.scss"],
-            "stylePreprocessorOptions": {
-              "includePaths": [
-                "node_modules/foundation-sites/scss/",
-                "node_modules/nes.css/scss/"
-              ]
-            },
-            "scripts": [],
-            "assets": ["client/src/assets"]
-          }
-        },
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
