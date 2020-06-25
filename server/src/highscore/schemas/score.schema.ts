@@ -3,6 +3,11 @@ import { Document } from 'mongoose';
 import { Score } from '../interfaces/score.interface';
 
 export const ScoreSchema: mongoose.Schema = new mongoose.Schema({
+  _id: {
+    type: mongoose.Schema.Types.ObjectId,
+    unique: true,
+    indexes: true,
+  },
   score: {
     type: Number,
     required: true,

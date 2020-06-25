@@ -1,15 +1,14 @@
 {
+  "extends": "../tsconfig.json",
   "compilerOptions": {
     "resolveJsonModule": true,
     "module": "commonjs",
     "declaration": true,
     "removeComments": true,
     "emitDecoratorMetadata": true,
-    "experimentalDecorators": true,
     "target": "es6",
-    "sourceMap": true,
-    "outDir": "./dist",
+    "outDir": "../dist/server",
     "baseUrl": "./src"
   },
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules", "dist"]
 }
