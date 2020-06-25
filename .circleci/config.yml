@@ -1,7 +1,7 @@
 version: 2
 jobs:
-  build:
-    working_directory: ~/highscore-frontend
+  ci-client:
+    working_directory: ~/highscore
     docker:
       - image: circleci/node:12.12.0-browsers
     steps:
@@ -22,13 +22,13 @@ jobs:
           key: v1-dependencies-{{ checksum "package-lock.json" }}
       - run:
           name: Lint Project
-          command: npm run lint
+          command: npm run ng:lint
       - run:
           name: Testing
-          command: npm test -- --watch=false --browsers=ChromeHeadless
+          command: npm test
       # - run:
       #     name: End to End Test
       #     command: npm run e2e -- --protractor-config=e2e/protractor.conf.js
       - run:
           name: Production Build
-          command: npm build --prod --aot
+          command: npm ng:build --prod --aot
